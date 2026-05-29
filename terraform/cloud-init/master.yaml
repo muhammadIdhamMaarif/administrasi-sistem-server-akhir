@@ -1,0 +1,21 @@
+#cloud-config
+
+hostname: master
+
+users:
+  - name: admin
+    groups: sudo
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+
+package_update: true
+
+packages:
+  - docker.io
+  - ansible
+  - haproxy
+  - curl
+
+runcmd:
+  - systemctl enable docker
+  - systemctl start docker
