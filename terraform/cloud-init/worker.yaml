@@ -1,0 +1,18 @@
+#cloud-config
+
+hostname: worker
+
+users:
+  - name: webadmin
+    groups: sudo
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+
+package_update: true
+
+packages:
+  - docker.io
+
+runcmd:
+  - systemctl enable docker
+  - systemctl start docker
